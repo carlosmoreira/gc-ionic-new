@@ -18,7 +18,7 @@ export class CheckoutPage {
 
   public cards : Array<Object>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public gcart : CartProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public cart : CartProvider) {
     this.cards = this.cart.getCards();
   }
 
