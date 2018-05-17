@@ -31,10 +31,10 @@ export class HomePage {
                 type:"egift",
                 updated_at:"2018-04-11 14:20:27"});
             this.cart.cards.push({id: 2,
-                image:"/images/cards/15051401312959.png",
+                image:"/images/cards/15051281969258.JPG",
                 is_numbers_only:1,
                 is_pin_required:1,
-                name:"Abercrombie & Fitch",
+                name:"American Express (pre-paid)",
                 number_max_length:null,
                 number_min_length:null,
                 offer_percentage:72,
@@ -48,6 +48,7 @@ export class HomePage {
 
         }
 
+        console.log(this.cart.getCards());
 
     }
 
@@ -73,4 +74,3 @@ export class HomePage {
         this.selectedCard = null;
     }
 }
-
