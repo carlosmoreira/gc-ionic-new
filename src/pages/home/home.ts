@@ -21,6 +21,7 @@ export class HomePage {
             if(response.status == "success"){
                 if(response.data && response.data.cards){
                     this.cards = response.data.cards;
+                    this.cart.cards = response.data.cards;
                 }
             }
             console.log('data response', response);
@@ -31,7 +32,11 @@ export class HomePage {
 
     public search(name: string) {
         console.log("Searching for:", name);
-        console.log("string: " , this.cardSearch);
+        this.cards = this.cart.getFilteredCards(name.data);
+        if(name.length < 1){
+            console.log("Reseting All Cards");
+            this.cards = this.cart.getCards();
+        }
     }
 
     public select(card) {

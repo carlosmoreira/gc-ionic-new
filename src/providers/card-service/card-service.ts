@@ -16,7 +16,7 @@ export class CardServiceProvider {
 
   getCards(){
     return new Promise(resolve => {
-      this.http.get("http://backend-giftcash-ca.carlosdevelops.com/api/cards").subscribe(response => {
+      this.http.get("http://backend-giftcash-ca.carlosdevelops.com/api/cards").subscribe(response => { 
         resolve(response);
       }, err => {
         console.log(err);
