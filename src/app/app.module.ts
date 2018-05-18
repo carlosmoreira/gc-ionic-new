@@ -15,6 +15,7 @@ import {CheckoutPage} from "../pages/checkout/checkout";
 import { CardServiceProvider } from '../providers/card-service/card-service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthProvider } from '../providers/auth/auth';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpServiceProvider,
     CartProvider, 
-    CardServiceProvider
+    CardServiceProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}
