@@ -16,30 +16,47 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class LoginPage {
 
-  user : FormGroup;
+  user: FormGroup;
+  registerUser: FormGroup;
 
   constructor(public navCtrl: NavController, private fb: FormBuilder) {
     this.user = this.fb.group({
-      username : [],
-      password : []
+      username: [],
+      password: []
     });
-  }
+
+    this.registerUser = this.fb.group({
+      firstName: [],
+      lastName: [],
+      username: [],
+      password: [],
+      confirmPassword: []
+    });
+  } 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  submitLogin(userLogin){
+  submitLogin(userLogin) {
     console.log(userLogin);
     console.log(userLogin.value);
   }
 
-  register(){
-  	console.log('registering');
+  submitRegister(userRegister) {
+    console.log('registering', userRegister.value);
+    alert('To be implemented, data is collected');
   }
 
-  resetPassword(){
-  	console.log('reset password');
+  resetPassword() {
+    console.log('reset password');
   }
 
+  slideToRegister() {
+
+  }
+
+  forgotPassword() {
+    alert('To Be Implemented..');
+  }
 }

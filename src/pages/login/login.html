@@ -20,7 +20,7 @@
 			</div>
 			<h2 class="title">Login</h2>
 			<p text-center>Don't have an account?
-				<a class="title" href="#">Sign Up</a>
+				<a type="button" class="title" href="#" (click)="slideToRegister()">Sign Up</a>
 			</p>
 			<ion-card>
 				<ion-card-content>
@@ -40,7 +40,7 @@
 				</ion-card-content>
 			</ion-card>
 			<p>
-				<a href="#" class="title">Forgot your password?</a>
+				<a tyoe="button" href="#" class="title" (click)="forgotPassword()">Forgot your password?</a>
 			</p>
 		</ion-slide>
 		<ion-slide id="register-slide">
@@ -50,29 +50,31 @@
 			<h2 class="title">Register</h2>
 			<ion-card>
 				<ion-card-content>
+					<form [formGroup]="registerUser" (ngSubmit)="submitRegister(registerUser)">
 					<ion-list>
 						<ion-item>
 							<ion-label floating>First Name</ion-label>
-							<ion-input type="text"></ion-input>
+							<ion-input type="text" formControlName="firstName"></ion-input>
 						</ion-item>
 						<ion-item>
 							<ion-label floating>Last Name</ion-label>
-							<ion-input type="text"></ion-input>
+							<ion-input type="text" formControlName="lastName"></ion-input>
 						</ion-item>
 						<ion-item>
 							<ion-label floating>Username</ion-label>
-							<ion-input type="text"></ion-input>
+							<ion-input type="text" formControlName="username"></ion-input>
 						</ion-item>
 						<ion-item>
 							<ion-label floating>Password</ion-label>
-							<ion-input type="password"></ion-input>
+							<ion-input type="password" formControlName="password"></ion-input>
 						</ion-item>
 						<ion-item>
 							<ion-label floating>Confirm Password</ion-label>
-							<ion-input type="password"></ion-input>
+							<ion-input type="password" formControlName="confirmPassword"></ion-input>
 						</ion-item>
 					</ion-list>
-					<button ion-button full color="btnGreen">Register!</button>
+					<button type="submit" ion-button full color="btnGreen">Register!</button>
+				</form>
 				</ion-card-content>
 			</ion-card>
 		</ion-slide>
