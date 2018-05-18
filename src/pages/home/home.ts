@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {CartProvider} from "../../providers/cart/cart";
 import {CheckoutPage} from "../checkout/checkout";
+import { CardServiceProvider } from '../../providers/card-service/card-service';
+
 
 @Component({
     selector: 'page-home',
@@ -13,8 +15,16 @@ export class HomePage {
     public cards: Array<Object> ;
     public selectedCard: any;
 
-    constructor(public navCtrl: NavController, public cart: CartProvider) {
+    constructor(public navCtrl: NavController, public cart: CartProvider, public CardService : CardServiceProvider) {
         //Get cards from server or memory
+        CardService.getCards().then(response => {
+            if(response.status == "success"){
+                if(response.data && response.data.cards){
+                    this.cards = response.data.cards;
+                }
+            }
+            console.log('data response', response);
+          });
         if(this.cart.getCards().length < 1){
             //Call service to retrieve cards
             this.cart.cards.push({id: 1,

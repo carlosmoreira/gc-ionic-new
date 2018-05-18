@@ -12,6 +12,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpServiceProvider } from '../providers/http-service/http-service';
 import { CartProvider } from '../providers/cart/cart';
 import {CheckoutPage} from "../pages/checkout/checkout";
+import { CardServiceProvider } from '../providers/card-service/card-service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import {CheckoutPage} from "../pages/checkout/checkout";
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,7 +41,8 @@ import {CheckoutPage} from "../pages/checkout/checkout";
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpServiceProvider,
-    CartProvider
+    CartProvider, 
+    CardServiceProvider
   ]
 })
 export class AppModule {}
