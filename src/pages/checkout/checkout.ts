@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {CartProvider} from "../../providers/cart/cart";
+import { CartProvider } from "../../providers/cart/cart";
 
 /**
  * Generated class for the CheckoutPage page.
@@ -10,20 +10,36 @@ import {CartProvider} from "../../providers/cart/cart";
  */
 
 @IonicPage()
-@Component({
+@Component({ 
   selector: 'page-checkout',
   templateUrl: 'checkout.html',
 })
+
 export class CheckoutPage {
 
-  public cards : Array<Object>;
+  public payout: Payout;
+  public cards: Object = Object;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public cart : CartProvider) {
-    this.cards = this.cart.getCards();
+  constructor(public navCtrl: NavController, public navParams: NavParams, public cart: CartProvider) {
+    this.payout = new Payout();
+    this.cards = this.cart.getSelectedCards();
+    console.log(this.cards);
+  }
+
+  complete(){
+    console.log('complete');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CheckoutPage');
   }
-
 }
+
+class Payout {
+  public payoutMethod;
+  public payoutEmail;
+  constructor() {
+    this.payoutMethod = "";
+    this.payoutEmail = "";
+  }
+} 

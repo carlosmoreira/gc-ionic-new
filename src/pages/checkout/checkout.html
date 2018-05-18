@@ -7,6 +7,9 @@
 <ion-header>
 
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>checkout</ion-title>
   </ion-navbar>
 
@@ -14,6 +17,54 @@
 
 
 <ion-content padding>
-  <h2>Checkout Page</h2>
-  {{cards}}
+  <ion-list>
+    <ion-item>
+      <ion-label>Payout Method</ion-label>
+      <ion-select [(ngModel)]="payout.payoutMethod">
+        <ion-option value="PayPal">PayPal</ion-option>
+        <ion-option value="Interac">Interac</ion-option>
+        <ion-option value="Check">Check</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Payout Email</ion-label>
+      <ion-input type="text" [(ngModel)]="payout.payoutEmail"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <hr>
+
+  <ion-grid>
+      <ion-row  class="checkout-card">
+        <ion-col col-12 text-center>
+            <img src="https://giftcash.ca/{{cards.image}}"> {{cards.name}}
+            <p>Card Balance: {{cards.cardBalance}}</p>
+        </ion-col>
+        <ion-col col-12>
+            <ion-list>
+                <ion-item>
+                    <ion-label floating>Card Number</ion-label>
+                    <ion-input type="text" [(ngModel)]="cards.cardNumber"></ion-input> 
+                </ion-item>
+                <ion-item>
+                  <ion-label floating>Card Pin</ion-label>
+                  <ion-input type="text" [(ngModel)]="cards.cardPin"></ion-input> 
+                </ion-item>
+              </ion-list>
+          </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col col-12 text-center >
+              <h5>Payout Total</h5>
+              $70
+          </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col col-12 text-center>
+              <button ion-button full color="btnGreen" (click)="complete()">Complete Sale!</button>
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
 </ion-content>

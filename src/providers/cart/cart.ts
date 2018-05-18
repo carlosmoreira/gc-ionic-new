@@ -11,14 +11,18 @@ import {Injectable} from '@angular/core';
 export class CartProvider {
 
     public cards: Array<Object>;
-    private selectedCards : Array<Object>;
+    private selectedCards : Object;
     constructor() {
         this.cards = [];
-        this.selectedCards = [];
+        this.selectedCards = Object; 
     }
 
     public getCards() {
         return this.cards;
+    }
+
+    public getSelectedCards(){
+        return this.selectedCards;
     }
 
     /**
@@ -26,7 +30,7 @@ export class CartProvider {
      * @param {Object} card
      */
     public addCard(card : Object) : boolean{
-        this.selectedCards.push(card);
+        this.selectedCards = card;
         return true;
     }
 
