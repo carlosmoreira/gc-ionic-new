@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 /**
  * Generated class for the LoginPage page.
@@ -15,15 +16,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user : FormGroup;
+
+  constructor(public navCtrl: NavController, private fb: FormBuilder) {
+    this.user = this.fb.group({
+      username : [],
+      password : []
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  login(){
-  	console.log('loggin in');
+  submitLogin(userLogin){
+    console.log(userLogin);
+    console.log(userLogin.value);
   }
 
   register(){

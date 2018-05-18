@@ -14,6 +14,7 @@ import { CartProvider } from '../providers/cart/cart';
 import {CheckoutPage} from "../pages/checkout/checkout";
 import { CardServiceProvider } from '../providers/card-service/card-service';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

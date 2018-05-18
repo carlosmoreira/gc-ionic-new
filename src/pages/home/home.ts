@@ -8,8 +8,8 @@ import { CardServiceProvider } from '../../providers/card-service/card-service';
 @Component({
     selector: 'page-home',
     templateUrl: 'home.html'
-})
-export class HomePage {
+}) 
+export class HomePage { 
 
     public cardSearch : string;
     public cards: Array<Object> ;
