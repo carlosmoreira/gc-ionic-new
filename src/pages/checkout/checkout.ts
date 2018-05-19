@@ -16,13 +16,14 @@ import { CartProvider } from "../../providers/cart/cart";
 })
 
 export class CheckoutPage {
-
+ 
   public payout: Payout;
   public cards: Object = Object;
-
+  public user : Object;
   constructor(public navCtrl: NavController, public navParams: NavParams, public cart: CartProvider) {
     this.payout = new Payout();
     this.cards = this.cart.getSelectedCards();
+    this.user = this.cart.logedInUser;
     console.log(this.cards);
   }
 

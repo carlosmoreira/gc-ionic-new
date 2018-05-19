@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -13,19 +13,20 @@ import { CheckoutPage } from '../pages/checkout/checkout';
 })
 export class MyApp { 
   @ViewChild(Nav) nav: Nav;
+  isLoggedIn : boolean = false;
+  user : Object;
+  rootPage: any = HomePage; 
+  pages: Array<{title: string, component: any, requiresAuth : boolean, hideIfAuth : boolean }>;
 
-  rootPage: any = LoginPage; 
-
-  pages: Array<{title: string, component: any}>;
-
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public events :Events) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Logout', component: ListPage },
-      { title: 'Login/Register', component: LoginPage }
+      { title: 'Home', component: HomePage, requiresAuth : false , hideIfAuth : false },
+      { title: 'Checkout', component: CheckoutPage,  requiresAuth : false , hideIfAuth : false },
+      { title: 'Logout', component: ListPage,  requiresAuth : true , hideIfAuth : false },
+      { title: 'Login/Register', component: LoginPage, requiresAuth : false , hideIfAuth : true }
     ];
 
   }
@@ -43,5 +44,18 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  ngAfterViewInit(){
+    this.events.subscribe("user:auth:login", (user) => {
+      // user and time are the same arguments passed in `events.publish(user, time)`
+      console.log('Welcome', user);
+      this.user = user;
+      this.isLoggedIn = true;
+    });
+    this.events.subscribe("user:auth:logout", (user) => {
+      // user and time are the same arguments passed in `events.publish(user, time)`
+      console.log('Welcome', user);
+    });
   }
 }

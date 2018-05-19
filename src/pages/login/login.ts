@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController, Events } from 'ionic-angular';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the LoginPage page.
@@ -20,7 +21,7 @@ export class LoginPage {
   user: FormGroup;
   registerUser: FormGroup;
 
-  constructor(public navCtrl: NavController, private fb: FormBuilder, public auth: AuthProvider, public loadingCtrl: LoadingController, public alertCtrl : AlertController) {
+  constructor(public navCtrl: NavController, private fb: FormBuilder, public auth: AuthProvider, public loadingCtrl: LoadingController, public alertCtrl : AlertController, public events : Events) {
     this.user = this.fb.group({
       username: ['biff@example.com'],
       password: ['asdfasdf']
@@ -47,9 +48,11 @@ export class LoginPage {
     loader.present();
     this.auth.login(userLogin.value).then(response => {
       loader.dismiss();
+      this.events.publish("user:auth:login", response.data.user);
+      this.navCtrl.setRoot(HomePage);
       console.log("submit Login: Success", response);
     }).catch(response => {
-      loader.dismiss();
+      loader.dismiss(); 
       let alert = this.alertCtrl.create({
         title: 'Login Error!',
         subTitle: response.error.message,

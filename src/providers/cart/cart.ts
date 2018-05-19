@@ -13,9 +13,11 @@ export class CartProvider {
     public logedInUser : Object;
     public cards: Array<Object>;
     private selectedCards : Object;
+
     constructor() {
         this.cards = [];
         this.selectedCards = Object; 
+        this.logedInUser = null;
     }
  
     public getCards() {

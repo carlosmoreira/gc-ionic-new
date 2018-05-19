@@ -64,6 +64,9 @@
               <button ion-button full color="btnGreen" (click)="complete()">Complete Sale!</button>
           </ion-col>
       </ion-row>
+      <ion-row *ngIf="user">
+          Logged In {{user.first_name}}
+      </ion-row>
     </ion-grid>
 
 
