@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 export class HttpServiceProvider {
     private apiUrl: string;
 
-    constructor(public http: HttpClient) {
-        this.apiUrl = "http://backend.giftcash.ca/api/";
+    constructor(public http: HttpClient) { 
+        this.apiUrl = "http://backend-giftcash-ca.carlosdevelops.com/api/";
         console.log('Using API:' + this.apiUrl);
     } 
 

@@ -37,7 +37,7 @@ export class HomePage {
             console.log("Reseting All Cards");
             this.cards = this.cart.getCards();
         }
-    }
+    } 
 
     public select(card) {
         console.log(card);

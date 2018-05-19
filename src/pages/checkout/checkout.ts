@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CartProvider } from "../../providers/cart/cart";
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the CheckoutPage page.
@@ -21,7 +22,7 @@ export class CheckoutPage {
   public cards: Object = Object;
   public user : Object;
   constructor(public navCtrl: NavController, public navParams: NavParams, public cart: CartProvider) {
-    this.payout = new Payout();
+    this.payout = new Payout(); 
     this.cards = this.cart.getSelectedCards();
     this.user = this.cart.logedInUser;
     console.log(this.cards);
@@ -33,6 +34,10 @@ export class CheckoutPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CheckoutPage');
+  }
+
+  backToHome(){
+    this.navCtrl.setRoot(HomePage);
   }
 }
 

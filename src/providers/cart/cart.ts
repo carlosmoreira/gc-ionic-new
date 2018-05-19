@@ -16,7 +16,7 @@ export class CartProvider {
 
     constructor() {
         this.cards = [];
-        this.selectedCards = Object; 
+        this.selectedCards = null; 
         this.logedInUser = null;
     }
  

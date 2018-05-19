@@ -19,10 +19,10 @@ export class MyApp {
   pages: Array<{title: string, component: any, requiresAuth : boolean, hideIfAuth : boolean }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public events :Events) {
-    this.initializeApp();
+    this.initializeApp(); 
 
     // used for an example of ngFor and navigation
-    this.pages = [
+    this.pages = [ 
       { title: 'Home', component: HomePage, requiresAuth : false , hideIfAuth : false },
       { title: 'Checkout', component: CheckoutPage,  requiresAuth : false , hideIfAuth : false },
       { title: 'Logout', component: ListPage,  requiresAuth : true , hideIfAuth : false },

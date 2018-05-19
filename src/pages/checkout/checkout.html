@@ -17,57 +17,72 @@
 
 
 <ion-content padding>
-  <ion-list>
-    <ion-item>
-      <ion-label>Payout Method</ion-label>
-      <ion-select [(ngModel)]="payout.payoutMethod">
-        <ion-option value="PayPal">PayPal</ion-option>
-        <ion-option value="Interac">Interac</ion-option>
-        <ion-option value="Check">Check</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Payout Email</ion-label>
-      <ion-input type="text" [(ngModel)]="payout.payoutEmail"></ion-input>
-    </ion-item>
-  </ion-list>
 
-  <hr>
+  <div *ngIf="cards">
+    <ion-list>
+      <ion-item>
+        <ion-label>Payout Method</ion-label>
+        <ion-select [(ngModel)]="payout.payoutMethod">
+          <ion-option value="PayPal">PayPal</ion-option>
+          <ion-option value="Interac">Interac</ion-option>
+          <ion-option value="Check">Check</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Payout Email</ion-label>
+        <ion-input type="text" [(ngModel)]="payout.payoutEmail"></ion-input>
+      </ion-item>
+    </ion-list>
 
-  <ion-grid>
-      <ion-row  class="checkout-card">
+    <hr>
+
+    <ion-grid>
+      <ion-row class="checkout-card">
         <ion-col col-12 text-center>
-            <img src="https://giftcash.ca/{{cards.image}}"> {{cards.name}}
-            <p>Card Balance: {{cards.cardBalance}}</p>
+          <img src="https://giftcash.ca/{{cards.image}}"> {{cards.name}}
+          <p>Card Balance: {{cards.cardBalance}}</p>
         </ion-col>
         <ion-col col-12>
-            <ion-list>
-                <ion-item>
-                    <ion-label floating>Card Number</ion-label>
-                    <ion-input type="text" [(ngModel)]="cards.cardNumber"></ion-input> 
-                </ion-item>
-                <ion-item>
-                  <ion-label floating>Card Pin</ion-label>
-                  <ion-input type="text" [(ngModel)]="cards.cardPin"></ion-input> 
-                </ion-item>
-              </ion-list>
-          </ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-label floating>Card Number</ion-label>
+              <ion-input type="text" [(ngModel)]="cards.cardNumber"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Card Pin</ion-label>
+              <ion-input type="text" [(ngModel)]="cards.cardPin"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
       </ion-row>
       <ion-row>
-          <ion-col col-12 text-center >
-              <h5>Payout Total</h5>
-              $70
-          </ion-col>
+        <ion-col col-12 text-center>
+          <h5>Payout Total</h5>
+          $70
+        </ion-col>
       </ion-row>
       <ion-row>
-          <ion-col col-12 text-center>
-              <button ion-button full color="btnGreen" (click)="complete()">Complete Sale!</button>
-          </ion-col>
+        <ion-col col-12 text-center>
+          <button ion-button full color="btnGreen" (click)="complete()">Complete Sale!</button>
+        </ion-col>
       </ion-row>
       <ion-row *ngIf="user">
-          Logged In {{user.first_name}}
+        Logged In {{user.first_name}}
       </ion-row>
     </ion-grid>
+
+
+  </div>
+  <ion-grid *ngIf="!cards">
+    <ion-row>
+      <ion-col col-12>
+        <p>There there no cards selected</p>
+      </ion-col>
+      <ion-col col-12>
+        <button ion-button full color="danger" (click)="backToHome()">Find Cards!</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 
 </ion-content>
