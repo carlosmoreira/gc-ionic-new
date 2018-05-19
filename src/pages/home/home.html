@@ -5,7 +5,7 @@
     </button>
     <ion-title>Home</ion-title>
   </ion-navbar>
-    <ion-searchbar [(ngModel)]="cardSearch" (ionInput)="search()"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="cardSearch" (ionInput)="search()" placeholder="Search Card Name"></ion-searchbar>
 </ion-header>
 
 <ion-content padding>
@@ -21,6 +21,9 @@
     </ion-list>
     <p *ngIf="!cardSearch">
         Search for a card!
+    </p>
+    <p *ngIf="cardSearch && cards.length < 1">
+        Sorry no cards found.
     </p>
 
     <div *ngIf="selectedCard">

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpServiceProvider } from '../http-service/http-service';
 
 /*
   Generated class for the CardServiceProvider provider.
@@ -10,13 +11,13 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class CardServiceProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello CardServiceProvider Provider');
+  constructor(public http: HttpServiceProvider) {
+    
   } 
 
   getCards(){
     return new Promise(resolve => {
-      this.http.get("http://backend-giftcash-ca.carlosdevelops.com/api/cards").subscribe(response => { 
+      this.http.get("cards").subscribe(response => { 
         resolve(response);
       }, err => {
         console.log(err);

@@ -6,10 +6,10 @@ export class HttpServiceProvider {
     private apiUrl: string;
 
     constructor(public http: HttpClient) {
-        console.log('Hello HttpServiceProvider Provider: http://backend.giftcash.ca/api/');
-        this.apiUrl = "http://backend.giftcash.ca/api/";
+        this.apiUrl = "http://backend-giftcash-ca.carlosdevelops.com/api/";
+        console.log('Using API:' + this.apiUrl);
     }
-
+    
     /**
      * Send Post Request
      * @param {string} url
