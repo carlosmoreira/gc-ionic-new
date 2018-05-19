@@ -48,5 +48,5 @@ import { AuthProvider } from '../providers/auth/auth';
     CardServiceProvider,
     AuthProvider
   ]
-})
+}) 
 export class AppModule {}

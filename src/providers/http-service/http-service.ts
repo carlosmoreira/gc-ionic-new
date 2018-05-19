@@ -1,23 +1,20 @@
-import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class HttpServiceProvider {
     private apiUrl: string;
 
     constructor(public http: HttpClient) {
-        this.apiUrl = "http://backend-giftcash-ca.carlosdevelops.com/api/";
+        this.apiUrl = "http://backend.giftcash.ca/api/";
         console.log('Using API:' + this.apiUrl);
-    }
-    
-    /**
-     * Send Post Request
-     * @param {string} url
-     * @param {Object} data
-     * @returns {Observable<Object>}
-     */
-    public post(url: string, data: Object) {
-        return this.http.post(this.apiUrl + url, data);
+    } 
+
+    public post(url: string, data: Object, headers = null) {
+        if (headers)
+            return this.http.post(this.apiUrl + url, data, { headers: headers });
+        else
+            return this.http.post(this.apiUrl + url, data);
     }
 
     /**

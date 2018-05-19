@@ -10,6 +10,7 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class CartProvider {
 
+    public logedInUser : Object;
     public cards: Array<Object>;
     private selectedCards : Object;
     constructor() {
