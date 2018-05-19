@@ -5,7 +5,7 @@ import {CheckoutPage} from "../checkout/checkout";
 import { CardServiceProvider } from '../../providers/card-service/card-service';
 
 
-@Component({
+@Component({ 
     selector: 'page-home',
     templateUrl: 'home.html'
 }) 
@@ -30,10 +30,10 @@ export class HomePage {
 
     }
 
-    public search(name: string) {
-        console.log("Searching for:", name);
-        this.cards = this.cart.getFilteredCards(name.data);
-        if(name.length < 1){
+    public search() {
+        console.log("Searching for:", this.cardSearch);
+        this.cards = this.cart.getFilteredCards(this.cardSearch);
+        if(this.cardSearch.length < 1 || this.cardSearch == null){
             console.log("Reseting All Cards");
             this.cards = this.cart.getCards();
         }

@@ -16,7 +16,7 @@ export class CartProvider {
         this.cards = [];
         this.selectedCards = Object; 
     }
-
+ 
     public getCards() {
         return this.cards;
     }
@@ -38,15 +38,17 @@ export class CartProvider {
 
     }
 
+    /**
+     * return filtered cards that name param name
+     * @param cardSearch 
+     */
     public getFilteredCards(cardSearch : string){
-        console.log('value for cardsearch: ', cardSearch.length);
         if(cardSearch.length > 0){
-            console.log("getfilteredCards search....");
             return this.cards.filter((card) => {
-                return card.name.toLowerCase().indexOf(cardSearch.toLowerCase()) > 1;
+                return card.name.toLowerCase().indexOf(cardSearch.toLowerCase()) != -1;
             });
         }
-        
+        return [];
     }
 
 }

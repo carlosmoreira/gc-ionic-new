@@ -12,7 +12,7 @@ export class CardServiceProvider {
 
   constructor(public http: HttpClient) {
     console.log('Hello CardServiceProvider Provider');
-  }
+  } 
 
   getCards(){
     return new Promise(resolve => {
